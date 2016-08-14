@@ -1,0 +1,239 @@
+- git add
+- git branch
+- git checkout
+- git clean
+- git clone
+- git commit
+- git commit -- amend
+- git config
+- git fetch
+- git init
+- git log
+- git merge
+- git pull
+- git push
+- git rebase
+- git reflog
+- git remote
+- git reset
+- git revert
+- git status
+ 
+
+ CONCEPTOS
+ 
+- Arquitectura de árbol
+- Ambientes (Local, Producción, Testing)
+- Branch
+- Deployment (Despliegue)
+- Fork
+- Gitflow Workflow
+- GUI’s (Graphical User Interfaces)
+- HEAD
+- Hook
+- Master (Branch)
+- Pull Request
+- Repositorio
+- Sistema de Control de Versiones
+- Staging Area
+- Tag
+- Working Directory
+ 
+
+
+ ==========================
+Para confirmar que GIT esté totalmente listo para trabajar, abrimos nuestra terminal ó consola y después ejecutamos el siguiente comando:
+ 
+$git --version
+ git 1.8.0.3
+
+Configuración
+
+Es recomendable ejecutar los siguientes comandos para propósitos de identificación. Estos datos serán utilizados para marcar los commits que realices.
+
+git config --global user.name "Pon aquí tu nombre"
+git config --global user.email "pon@aqui.tu.correo"
+Para tener texto en color:
+
+git config --global color.ui "auto"
+Para habilitar la detección automática del número de hilos a usar al empacar repositorios (bueno para computadoras multi-CPU o multi-núcleo):
+
+git config --global pack.threads "0"
+Since Git 2.0, Git defaults to the more conservative ‘simple’ behavior, which only pushes the current branch to the corresponding remote branch that ‘git pull’ uses to update the current branch.
+git config --global push.default simple
+Aquí algunos alias que tengo dados de alta en mi ~/.gitconfig, ayudan a teclear menos en la terminal:
+
+[alias]
+    l = log --oneline --decorate --graph
+    co = checkout
+    ci = commit
+    man = help
+    h = help
+    a = add
+    f = fetch
+    d = diff
+    dc = diff --cached
+    dt = difftool
+    dtc = difftool --cached
+    ds = diff --stat
+    dsc = diff --stat --cached
+    s = status --short --branch
+    b = branch
+ 
+[credential]
+    helper = cache
+ 
+[diff]
+    algorithm = patience
+Para tener un .gitignore global:
+
+git config --global core.excludesfile ~/.gitignore_global
+
+
+repositiorio github
+|
+staying area
+|
+work area
+
+======================================================================================
+ $git init          iniciar un repo de git nuestro primer commit
+ $git status        muestra en que punto de la itreracion te encuientras
+$git add -A         manda todo al staying area
+$git add index.html
+$git commit -m "comentario"   agregar un comentario del avance es como un titulo
+$git commit -am "Rectificar el commit" --amend
+git log             permite saber puntualmente en donde estube haciendo cambios
+git log --online    
+git log --online  --graph        ves los avances por comentairos
+
+
+crear un alias
+git config --global alias.megalog "log --oneline"
+
+git reset --hard comit_id       borra comits
+git reset                       con el comit id puedes regresar en el tiempo
+
+git reset --hard comit=_id     tambien regresa todos los comits que habiamos borrado
+
+gitr reset --mixed comit_id              se usa cuando acabo de hacer 10 commits puedo regresar al comit 0                        y hacer un solo comit para reducir nop se mete con el work area
+                                   tambien s epuede hacer haCIA ADELANTE
+
+git reset --soft                 cambioos en el work ddirectory
+
+
+git checkout                     volver en el tiempo sin afectar, sirve para hacer alternativas en el tiempo
+
+
+git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
+=====================================================================================
+RAMAS
+$git log --online --graph --all  es para saber enn que punto de la rama estoy situado
+
+git branch experimental              sirve para generar mas ramas
+
+git checkout -b experimental         sirve para generar ramas
+
+git checkout master                  me cambio a la rama master
+
+$touch a.txt                        crear un archivo
+ 
+$git branch -d experimental         sirve para borrar una rama pero hasta que se haiga hecho una fusion de lo contrario no se podra de esta manera
+
+$git branch -D experimental         el admin forza y hace el borrado de una rama
+
+le creamos un alias
+git config --global alias.nicelog 'log --online --graph --all'
+
+FUSIONES
+La fusion tenemos al final todo junto haciendo un git merge, nos vamos a posicionar en el ultimo commit de master y de ahi hacemos el git merge
+
+$git merge experimental            aqui cambiarias experimental por el nombre de la rama
+
+pueden suceder 2 sitiaciones 
+hay un conflicto porque no tienen nada que ver uno con el otro
+se soluciona con fast-forward
+
+===========================================================================================
+apretar la letra o para poder escribir y poner el titulo y le ponemos esc :x cerrrar y salvar
+============================================================================================
+se resuelve de manera manual cuando modifican el mismo archivo   manual merge
+
+REBASE
+tecnica que al final con fusiones cambias las posiciones de los comits pone adelante los branch
+a nivel de head no se ha hecho un adelanto y un adelanto sobre la rama, aqui lo que hay que hacer es git merge desde master
+
+$git checkout rebease      mme posiciono en el commit que voy a empujar hasta mero adelante
+$git checkout master    
+$git merge rebease
+
+REINICIANDO EL PROYECTO
+entrar a la carpeta .git
+$rm -rf
+
+
+HEAD   dice con que commit se esta trabajando
+
+HEAD Pointer
+
+git log --oneline              se genera simplemente el commitid y del lado derecho el titulo
+git log --decorate             indica en que punto estoy del commit
+git log --stat                 explica cuantas lineas de codigo se modificaron
+git log -p                     es mas detallado que el anterior dice que linea borraron y que comando ejecutaron
+git shortlog                sepamos en que branch esta trabajando un desarrollador actualmente
+git log --graph --oneline --decorate    crea una grafica que nos permite seguir la historia del repositorio.
+git log --pretty=format:"string" nos permite mostrar mensajes personalizados de los comits.
+git log --pretty=format:"%cn hizo un comit %h el dia %cd" nos permite mostrar mensajes personalizados de los comits.
+git log -3              fitra por cantidad. limita el numero de commits
+gitr log --after="2016-1-2"      filtramos por fecha despues de
+git log --after="today"          filtrar por hoy
+git log --after="2016-1-1" --before="today"
+git log --grep="mensaje" -i         lo que hace grep es buscar por mensaje
+gti log -- index.html             podemos filtrar por archivo
+git log -S"mensaje"               podemos filtrar por contenido 
+
+https://hipertextual.com/archivo/2014/09/personalizar-prompt-zsh/
+personalizar git con zsh
+
+WORKFLOWS TRABAJO DE 2 PERSONAS AL MISMO TIEMPO
+Como logramos que varios profesionales trabajesn sobre un proyecto de codigo sin matarse?
+
+3 bases:
+Exploracion (clone)
+Colaboracion
+
+git clone           repositoria via ssh o https
+
+existen 2 repositorios
+remote repository
+
+https://github.com/explore
+local repository
+
+$git push     hace una conexion remota para compartirnos datos
+
+1.-primero hay que crear un repositorio en el area remote
+
+dentro de settings viene la llave ssh
+
+$ssh-keygen -t rsa -b 4096 -C "viverosjavier86@gmail.com"
+
+se genera la llave en la ruta /home/user/.ssh/id_rsa
+
+…or create a new repository on the command line
+
+echo "# comandos_git" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/GhostLT/comandos_git.git
+git push -u origin master
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/GhostLT/comandos_git.git
+git push -u origin master
+
+
+
+
