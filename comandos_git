@@ -211,6 +211,8 @@ remote repository
 https://github.com/explore
 local repository
 
+git.miguelnieva.com/#/270
+
 $git push     hace una conexion remota para compartirnos datos
 
 1.-primero hay que crear un repositorio en el area remote
@@ -234,6 +236,74 @@ git push -u origin master
 git remote add origin https://github.com/GhostLT/comandos_git.git
 git push -u origin master
 
+trabajando en equipo yo debo estar al tanto de las actualizaciones que hace la organizacion y por tanto se usa el comando
+$git fetch               sirve para actualizar origin/master
 
+luego hay que hacer una fusion de origin/master con master y con esto acabo de sincronizar ambos origin y origi/master
+
+simepre combino primero mis cambios y en mi pc hay que despues un push
+
+los comandos son los siguientes:
+$git remote add origin [SSH]
+$git fetch origin
+$git merge origin/master
+
+**Desarrollamos**
+$git fetch origin                 bajarlo a origin /master
+====================================================
+$git merge origin/master         hacemos una fusion
+====================================================
+$git add -A
+%git commit -m "comentarios nuevos"
+$git push origin master            ahora si ya puedo hacer un puch al servidor remoto
+
+
+ULTIMO FORMATO DE REPOSITORIOS
+
+$push request          solo hay un lider tecnico que decide que es lo que se fusiona
+
+
+PARA COLABORAR EN OTROS PROYECTOS DEBO HACER UN FORK AL PROYECTO QUE QUIERO PERO ADEMAS DEBO DE CLONAR EL ORIGIN
+
+origin
+upstream
+
+y los 2 los voy a conectar a mi pc y lo que voy hacer un fetch de los 2
+origin/master
+upstream/master
+master
+
+merge con upstream/master
+
+pull request es un permiaso que se le hace al repo remoto para que evaluen si vale la pena tu modificacion
+
+Proceso de repositorios "Forked"
+-Actualizamos siempre con el repositorio principal, antes de comenzar
+-Desarrollar y, antes de subir nuestro repositorio "forked",revisar nuevamente cambios.
+-subir a nuestro repositorio "forked" todo lo que hemos hecho.
+-Ejecutar un "Pull Request"
+
+comandos:
+git remote add origin [HTTPS o SSH del proyecto forked]
+git remote add upstream [HTTPS o SSH del proyecto forked la direccion ssh al proyecto principal]
+git remote -v                 revisamos que tengamos las 2 conexiones
+git fetch origin              me bajo los originales
+git merge origin/master
+git fetch upstream            
+git merge upstream/master       absorbemos los cambios del upstream,ya tengo lo defork y lo principal
+Hacer cambios en local
+$git add -A         manda todo al staying area
+$git commit -m "comentario"   agregar un comentario del avance es como un titulo
+git push origin master
+
+
+pull reques       es el permiso que faltra para que sean aprobados los cambios
+
+ir a github y dar en el boton new pull requesues para comparar las ramas 
+repositorio principal     <--- repositorio fork
+
+darle create pull request
+
+confirmo pull request
 
 
