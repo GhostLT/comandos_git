@@ -241,6 +241,9 @@ $git fetch               sirve para actualizar origin/master
 
 luego hay que hacer una fusion de origin/master con master y con esto acabo de sincronizar ambos origin y origi/master
 
+
+imgur.com    ---> para subir imagenes
+
 simepre combino primero mis cambios y en mi pc hay que despues un push
 
 los comandos son los siguientes:
@@ -314,3 +317,12 @@ Milestones
 Tags
 Usuarios
 Pull Request
+
+
+server como gestor para mis proyectos
+www.webfaction.com
+digitalocean.com
+
+hay que instalar git con:
+yum install git
+tiene conexion ssh
