@@ -322,7 +322,10 @@ Pull Request
 server como gestor para mis proyectos
 www.webfaction.com
 digitalocean.com
+github.com/integrations
 
 hay que instalar git con:
 yum install git
 tiene conexion ssh
+
+
