@@ -329,3 +329,43 @@ yum install git
 tiene conexion ssh
 
 
+CREACION DE USUARIOS EN LOCAL
+
+creamos 2 carpetas en 2 lugares distintos
+$cd ~/.ssh
+$ssh-keygen -t rsa -C "cuenta1@hola.com"
+#Este sera id_rsa
+$ssh-keygen -t rsa -C "cuenta2@hola.com"
+#Este sera mike colombiano
+
+AGREGAR LAS LLAVES A GITHUB
+creamos la llave ssh en gith como ya sabemos ir a setting en github
+
+ahora la segunda llave la generamos igual
+
+ahora hay que modificar en local en el archivo config
+crear un archivo config
+$emacs config 
+editar la info deacuerdo a la imagen agregada
+
+ssh-add -D      con este comando borramos todas las identidades ssh que estan creadas.
+
+
+$ssh-add id_rsa
+
+ssh-add mikecolombiano
+
+zenhub.io
+
+Desafio 1
+github pagges   crear un blog
+https://github.com/platzi/platzigit
+
+Desafio 2
+blog universitario 
+en 15 commits
+
+Desafio 3
+Desafio 3: Blog Universitario. Deployment Automático
+
+ver el video 43
